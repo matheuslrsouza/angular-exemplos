@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <td>Nome</td>
+      <td>Email</td>
+      <td>CEP</td>
+      <td colspan="2">Ação</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pessoa of pessoas | async">
+      <td>
+        {{ pessoa.nome }}
+      </td>
+      <td>
+        {{ pessoa.email }}
+      </td>
+      <td>
+        {{ pessoa.endereco.cep }}
+      </td>
+      <td>
+        <a href="javascript:void(0);" [routerLink]="['/pessoa/create', pessoa.cpf]">Editar</a>
+        <a href="javascript:void(0);" (click)="excluir(pessoa.cpf)">Excluir</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

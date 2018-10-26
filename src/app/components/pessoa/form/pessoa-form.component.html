@@ -1,0 +1,67 @@
+<form [formGroup]="formCadastro" (submit)="salvar(formCadastro.value)">
+  <fieldset>
+    <legend>Pessoa</legend>
+
+    <div>
+      <label for="txtNome">Nome</label>
+      <input type="text" id="txtNome" formControlName="nome" />
+    </div>
+
+    <div>
+      <label for="txtCpf">CPF</label>
+      <input type="text" id="txtCpf" formControlName="cpf" />
+    </div>
+
+    <div>
+      <label for="txtEmail">Email</label>
+      <input type="text" id="txtEmail" formControlName="email" />
+    </div>
+
+  </fieldset>
+
+  <fieldset formGroupName="endereco">
+    <legend>Endereço</legend>
+
+    <div>
+      <label for="txtCep">CEP</label>
+      <input type="text" id="txtCep" formControlName="cep" />
+    </div>
+
+    <div>
+      <label for="txtLogradouro">Logradouro</label>
+      <input type="text" id="txtLogradouro" formControlName="logradouro" />
+    </div>
+
+    <div>
+      <label for="txtBairro">Bairro</label>
+      <input type="text" id="txtBairro" formControlName="bairro" />
+    </div>
+
+    <div>
+      <label for="txtNumero">Número</label>
+      <input type="text" id="txtNumero" formControlName="numero" />
+    </div>
+
+    <div>
+      <label for="txtComplemento">Complemento</label>
+      <input type="text" id="txtComplemento" formControlName="complemento" />
+    </div>
+
+    <div>
+      <label for="txtCidade">Cidade</label>
+      <input type="text" id="txtCidade" formControlName="cidade" />
+    </div>
+
+    <div>
+      <label for="txtUf">UF</label>
+      <input type="text" id="txtUf" formControlName="uf" />
+    </div>
+
+  </fieldset>
+
+  <div>
+    <input type="submit" value="Salvar" [disabled]="formCadastro.invalid" />
+  </div>
+
+
+</form>
