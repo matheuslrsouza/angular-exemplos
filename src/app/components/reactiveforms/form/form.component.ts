@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Endereco } from '../../model/endereco.model';
 
 @Component({
   selector: 'app-form',
@@ -7,9 +9,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  formPessoa = this.fBuilder.group({
+    nome: ['', [
+      Validators.required, Validators.maxLength(4)
+    ]], 
+    sobrenome: [''], 
+    endereco: this.fBuilder.group({
+      cep: [''], 
+      logradouro: ['']
+    })
+  });
+
+  constructor(private fBuilder: FormBuilder) { }
 
   ngOnInit() {
+  }
+
+  carregaDadosEndereco() {
+    let endereco: Endereco = {
+      cep: '15990518', 
+      logradouro: 'Yolanda T Groppa'
+    };
+
+    this.formPessoa.patchValue({
+      nome: '12345',
+      endereco: endereco
+    });
+  }
+
+  salvar() {
+    console.log(this.formPessoa.value);
+  }
+
+  //possibilidade de utilizar essa property como atalho
+  //ex: [ngClass]="{'txt-invalido': nome.invalid && nome.touched}"
+  get nome() {
+    return this.formPessoa.get('nome');
   }
 
 }

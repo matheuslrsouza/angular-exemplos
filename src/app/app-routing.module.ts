@@ -14,7 +14,7 @@ const routes: Routes = [
   }, 
   {
     path: 'reactive', 
-    loadChildren: '../app/components/reactiveforms/reactive-forms.module#ReactiveFormsModule'
+    loadChildren: '../app/components/reactiveforms/reactive-forms.module#ReactiveModule'
   }
 ];
 

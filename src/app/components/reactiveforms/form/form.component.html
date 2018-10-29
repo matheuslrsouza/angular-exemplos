@@ -1,3 +1,61 @@
-<p>
-  form works!
-</p>
+
+
+<div *ngIf="formPessoa.invalid" class="invalido">
+    O formulário está invalido!
+</div>
+
+<form [formGroup]="formPessoa"
+      (ngSubmit)="salvar()">
+
+  <div>
+    Nome: <input type="text" 
+                 id="nome"
+                 formControlName="nome"
+                 [ngClass]="{'txt-invalido': 
+                  formPessoa.controls.nome.invalid && 
+                  formPessoa.controls.nome.touched}">
+
+    <div *ngIf="formPessoa.controls.nome.invalid && 
+                formPessoa.controls.nome.touched"
+          class="invalido" >
+      <div *ngIf="formPessoa.controls.nome.errors.required">
+        O campo é obrigatório!
+      </div>
+      <div *ngIf="formPessoa.controls.nome.errors.maxlength">
+        Limite máximo excedido!
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    Sobrenome: <input type="text" 
+                  formControlName="sobrenome">
+  </div>
+
+  <div formGroupName="endereco">
+    <div>
+      Cep: <input type="text" 
+                  formControlName="cep">
+    </div>
+    <div>
+      Logradouro: <input type="text" 
+                  formControlName="logradouro">
+    </div>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="!formPessoa.valid">Salvar</button>
+  </div>
+  
+
+</form>
+
+<div>
+  <button (click)="carregaDadosEndereco()">Buscar dados endereço</button>
+</div>
+
+<div>
+  Form valido?: {{formPessoa.valid}}<br/>
+  Status: {{formPessoa.status}}
+</div>
