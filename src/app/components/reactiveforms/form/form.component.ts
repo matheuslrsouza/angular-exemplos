@@ -27,8 +27,14 @@ export class FormComponent implements OnInit {
 
   carregaDadosEndereco() {
     let endereco: Endereco = {
-      cep: '15990518', 
-      logradouro: 'Yolanda T Groppa'
+      id: '',
+      cep: '15990518',
+      logradouro: 'Yolanda T Groppa',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+      uf: ''
     };
 
     this.formPessoa.patchValue({
